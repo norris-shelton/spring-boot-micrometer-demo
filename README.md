@@ -7,7 +7,7 @@ The project now supports setting the traceId from the `akamaiGlobalIdentifier` h
 
 ## Project Structure
 
-- Spring Boot 3.2.0 with JDK 21
+- Spring Boot 4.0.0-M1 with JDK 21
 - Spring MVC controller and service
 - Micrometer tracing with Brave implementation
 - SLF4J and Logback for logging with traceId and spanId
