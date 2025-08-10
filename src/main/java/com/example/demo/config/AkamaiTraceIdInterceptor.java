@@ -41,8 +41,8 @@ public class AkamaiTraceIdInterceptor implements HandlerInterceptor {
                 // Create a new trace context with the specified trace ID
                 TraceContext context = TraceContext.newBuilder()
                     .traceIdHigh(traceIdHigh)
-                    .traceIdLow(traceIdLow)
-                    .spanId(braveTracing.tracer().nextSpanId())
+                    .traceId(traceIdLow)
+                    .spanId(1L)  // Use fixed span ID since nextSpanId() is not available
                     .build();
                 
                 // Create a new span with this context
