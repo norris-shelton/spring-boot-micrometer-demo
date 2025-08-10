@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3c3f5ec-403a-4082-8845-d9da02b26dc2" name="Changes" comment="Updated &#10;&#10;- spring boot 3.4.5&#10;- setting the trace identifier works!!!&#10;- removed deprecations&#10;- added .gitignore">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="f3c3f5ec-403a-4082-8845-d9da02b26dc2" name="Changes" comment="Updated &#10;&#10;- converted RestTemplate to RestClient">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/AkamaiTraceIdInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/AkamaiTraceIdInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/TracingConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/TracingConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/controller/DemoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/controller/DemoControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,30 +58,30 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.spring-boot-micrometer-demo [clean,verify].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.spring-boot-micrometer-demo [clean...].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.spring-boot-micrometer-demo [clean].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;app.teamhub.selectedTeam&quot;: &quot;https://github.com/norris-shelton/spring-boot-micrometer-demo&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.spring-boot-micrometer-demo [clean,verify].executor": "Run",
+    "Maven.spring-boot-micrometer-demo [clean...].executor": "Run",
+    "Maven.spring-boot-micrometer-demo [clean].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "app.teamhub.selectedTeam": "https://github.com/norris-shelton/spring-boot-micrometer-demo",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.build.tools.auto.reload": "ALL",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Maven.spring-boot-micrometer-demo [clean,verify]">
     <configuration name="spring-boot-micrometer-demo [clean,verify]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
@@ -151,7 +147,26 @@
       <workItem from="1748381029214" duration="3230000" />
       <workItem from="1754800395464" duration="717000" />
       <workItem from="1754801117060" duration="269000" />
+      <workItem from="1754801391155" duration="1036000" />
+      <workItem from="1754802431495" duration="392000" />
     </task>
+    <task id="LOCAL-00001" summary="Updated &#10;&#10;- spring boot 3.4.5&#10;- setting the trace identifier works!!!&#10;- removed deprecations&#10;- added .gitignore">
+      <option name="closed" value="true" />
+      <created>1754801470712</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1754801470712</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Updated &#10;&#10;- converted RestTemplate to RestClient">
+      <option name="closed" value="true" />
+      <created>1754802529804</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754802529804</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +174,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated &#10;&#10;- spring boot 3.4.5&#10;- setting the trace identifier works!!!&#10;- removed deprecations&#10;- added .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated &#10;&#10;- spring boot 3.4.5&#10;- setting the trace identifier works!!!&#10;- removed deprecations&#10;- added .gitignore" />
+    <MESSAGE value="Updated &#10;&#10;- converted RestTemplate to RestClient" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated &#10;&#10;- converted RestTemplate to RestClient" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
