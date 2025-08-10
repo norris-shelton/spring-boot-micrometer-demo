@@ -1,37 +1,39 @@
 package com.example.demo.controller;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import io.micrometer.tracing.Tracer;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestClient;
 
-import io.micrometer.tracing.Tracer;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class AkamaiHeaderIntegrationTest {
 
     private static final Logger logger = LoggerFactory.getLogger(AkamaiHeaderIntegrationTest.class);
     
-    @LocalServerPort
+    @Value("${local.server.port}")
     private int port;
     
-    @Autowired
-    private TestRestTemplate restTemplate;
+    private RestClient restClient;
     
     @Autowired
     private Tracer tracer;
+    
+    @BeforeEach
+    void setUp() {
+        restClient = RestClient.builder()
+            .baseUrl("http://localhost:" + port)
+            .build();
+    }
     
     @Test
     public void testEndpointWithAkamaiHeader() {
@@ -47,16 +49,17 @@ public class AkamaiHeaderIntegrationTest {
         assertNotNull(tracer, "Tracer should be available");
         
         // Make request to endpoint with custom headers
-        HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(
-                "http://localhost:" + port + "/api/process?input=akamai-test", 
-                HttpMethod.GET, entity, String.class);
+        String response = restClient.get()
+                .uri("/api/process?input=akamai-test")
+                .headers(httpHeaders -> httpHeaders.addAll(headers))
+                .retrieve()
+                .body(String.class);
         
         // Log after request to show tracing context is propagated
-        logger.info("Received response from endpoint with Akamai header: {}", response.getBody());
+        logger.info("Received response from endpoint with Akamai header: {}", response);
         
-        assertNotNull(response.getBody(), "Response should not be null");
-        assertEquals("Processed: akamai-test", response.getBody(), "Response content should match expected");
+        assertNotNull(response, "Response should not be null");
+        assertEquals("Processed: akamai-test", response, "Response content should match expected");
         
         // Log to demonstrate trace context is maintained
         logger.info("Completed integration test with Akamai header");
@@ -68,9 +71,10 @@ public class AkamaiHeaderIntegrationTest {
         logger.info("Starting integration test without Akamai header");
         
         // Make request to endpoint without custom headers
-        String response = restTemplate.getForObject(
-                "http://localhost:" + port + "/api/process?input=standard-test", 
-                String.class);
+        String response = restClient.get()
+                .uri("/api/process?input=standard-test")
+                .retrieve()
+                .body(String.class);
         
         // Log after request to show tracing context is propagated
         logger.info("Received response from endpoint without Akamai header: {}", response);
